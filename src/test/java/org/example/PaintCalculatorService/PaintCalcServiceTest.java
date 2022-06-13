@@ -76,7 +76,7 @@ public class PaintCalcServiceTest {
         final double corner2Len = 1;
         final double corner2Wid = 1;
         HashMap<String, Double> dimensions = new HashMap<>();
-        // "shape" == 4.0 while the room is a cuboid with 2 missing corner
+        // "shape" == 4.0 while the room is a cuboid with 2 missing corners
         dimensions.put("shape", 4.0);
         dimensions.put("length", length);
         dimensions.put("width", width);
@@ -202,7 +202,7 @@ public class PaintCalcServiceTest {
     }
 
     @Test
-    public void amount_should_be_39m3_if_the_room_is_a_3mx5mx3m_cuboid_with_a_1mx2m_missing_corner() {
+    public void amount_should_be_36m3_if_the_room_is_a_3mx5mx3m_cuboid_with_2mx1m_and_1mx1m_missing_corners() {
         final PaintCalcService paintCalcService = new PaintCalcService();
         final String shape = "cuboid_with_1_missing_corner";
         final double length = 5;
@@ -211,8 +211,8 @@ public class PaintCalcServiceTest {
         final double corner1Len = 2;
         final double corner1Wid = 1;
         HashMap<String, Double> dimensions = new HashMap<>();
-        // "shape" == 3.0 while the room is a cuboid with a missing corner
-        dimensions.put("shape", 3.0);
+        // "shape" == 4.0 while the room is a cuboid with 2 missing corners
+        dimensions.put("shape", 4.0);
         dimensions.put("length", length);
         dimensions.put("width", width);
         dimensions.put("height", height);
@@ -222,10 +222,36 @@ public class PaintCalcServiceTest {
 
         double volume = paintCalcService.calcVolume(calcDto);
 
-        Assert.assertEquals(39, volume, 0.0);
+        Assert.assertEquals(36, volume, 0.0);
     }
 
+    @Test
+    public void amount_should_be_39m3_if_the_room_is_a_3mx5mx3m_cuboid_with_a_1mx2m_missing_corner() {
+        final PaintCalcService paintCalcService = new PaintCalcService();
+        final String shape = "cuboid_with_1_missing_corner";
+        final double length = 5;
+        final double width = 3;
+        final double height = 3;
+        final double corner1Len = 2;
+        final double corner1Wid = 1;
+        final double corner2Len = 1;
+        final double corner2Wid = 1;
+        HashMap<String, Double> dimensions = new HashMap<>();
+        // "shape" == 4.0 while the room is a cuboid with 2 missing corners
+        dimensions.put("shape", 4.0);
+        dimensions.put("length", length);
+        dimensions.put("width", width);
+        dimensions.put("height", height);
+        dimensions.put("corner1Len", corner1Len);
+        dimensions.put("corner1Wid", corner1Wid);
+        dimensions.put("corner2Len", corner2Len);
+        dimensions.put("corner2Wid", corner2Wid);
+        final CalcDto calcDto = buildCalcDto(dimensions);
 
+        double volume = paintCalcService.calcVolume(calcDto);
+
+        Assert.assertEquals(39, volume, 0.0);
+    }
 
 
     private CalcDto buildCalcDto(HashMap dimensions) {
@@ -260,10 +286,21 @@ public class PaintCalcServiceTest {
             calcDto.setShape((Double) dimensions.get("shape"));
             calcDto.setLen((Double) dimensions.get("length"));
             calcDto.setWid((Double) dimensions.get("width"));
-            calcDto.setCorner1Len((Double) dimensions.get("corner1Len"));
-            calcDto.setCorner1Wid((Double) dimensions.get("corner1Wid"));
-            calcDto.setCorner2Len((Double) dimensions.get("corner2Len"));
-            calcDto.setCorner2Wid((Double) dimensions.get("corner2Wid"));
+            if (dimensions.containsKey("height")) {
+                calcDto.setHeight((Double) dimensions.get("height"));
+            }
+            if (dimensions.containsKey("corner1Len")) {
+                calcDto.setCorner1Len((Double) dimensions.get("corner1Len"));
+            }
+            if (dimensions.containsKey("corner1Wid")) {
+                calcDto.setCorner1Wid((Double) dimensions.get("corner1Wid"));
+            }
+            if (dimensions.containsKey("corner2Len")) {
+                calcDto.setCorner2Len((Double) dimensions.get("corner2Len"));
+            }
+            if (dimensions.containsKey("corner2Wid")) {
+                calcDto.setCorner2Wid((Double) dimensions.get("corner2Wid"));
+            }
         }
         return calcDto;
     }

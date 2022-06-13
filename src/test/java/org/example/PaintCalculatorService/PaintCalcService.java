@@ -9,6 +9,9 @@ public class PaintCalcService {
             return calcAreaDto.getLength() * calcAreaDto.getWidth();
         } else if (calcAreaDto.getShape() == cylinder && calcAreaDto.getRadius() > 0) {
             return pi * calcAreaDto.getRadius() * calcAreaDto.getRadius();
+        } else if (calcAreaDto.getShape() == 3.0 && calcAreaDto.getLength() > 0 && calcAreaDto.getWidth() > 0
+                && calcAreaDto.getCorner1Len() > 0 && calcAreaDto.getCorner1Len() > 0) {
+            return calcAreaDto.getLength() * calcAreaDto.getWidth() - calcAreaDto.getCorner1Len() * calcAreaDto.getCorner1Wid();
         }
         return 0;
     }

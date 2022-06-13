@@ -46,6 +46,9 @@ public class PaintCalcService {
             return calcDto.getLength() * calcDto.getWidth() * calcDto.getHeight();
         } else if (calcDto.getShape() == cylinder && calcDto.getRadius() > 0 && calcDto.getHeight() > 0) {
             return pi * calcDto.getRadius() * calcDto.getRadius() * calcDto.getHeight();
+        } else if (calcDto.getShape() == cuboidWith1MC && calcDto.getLength() > 0 && calcDto.getWidth() > 0
+                && calcDto.getHeight() > 0 && calcDto.getCorner1Len() > 0 && calcDto.getCorner1Wid() > 0) {
+            return (calcDto.getLength() * calcDto.getWidth() - calcDto.getCorner1Len() * calcDto.getCorner1Wid()) * calcDto.getHeight();
         }
         return 0;
     }

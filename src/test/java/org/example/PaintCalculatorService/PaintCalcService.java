@@ -35,4 +35,7 @@ public class PaintCalcService {
         }
         return 0;
     }
+
+    public double calcVolume(CalcDto calcDto) {
+    }
 }

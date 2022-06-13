@@ -113,6 +113,7 @@ public class PaintCalcServiceTest {
             calcAreaDto.setCorner1Wid((Double) dimensions.get("corner1Wid"));
             calcAreaDto.setCorner2Len((Double) dimensions.get("corner2Len"));
             calcAreaDto.setCorner2Wid((Double) dimensions.get("corner2Wid"));
+        }
         return calcAreaDto;
     }
 }

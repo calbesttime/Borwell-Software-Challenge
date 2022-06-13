@@ -37,5 +37,10 @@ public class PaintCalcService {
     }
 
     public double calcVolume(CalcDto calcDto) {
+        if (calcDto.getShape() == cuboid && calcDto.getLength() > 0 && calcDto.getWidth() > 0
+                && calcDto.getHeight() > 0) {
+            return calcDto.getLength() * calcDto.getWidth() * calcDto.getHeight();
+        }
+        return 0;
     }
 }

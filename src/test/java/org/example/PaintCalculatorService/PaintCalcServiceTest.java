@@ -226,7 +226,7 @@ public class PaintCalcServiceTest {
     }
 
     @Test
-    public void amount_should_be_39m3_if_the_room_is_a_3mx5mx3m_cuboid_with_a_1mx2m_missing_corner() {
+    public void amount_should_be_36m3_if_the_room_is_a_3mx5mx3m_cuboid_with_a_1mx2m_missing_corner() {
         final PaintCalcService paintCalcService = new PaintCalcService();
         final String shape = "cuboid_with_1_missing_corner";
         final double length = 5;
@@ -250,7 +250,7 @@ public class PaintCalcServiceTest {
 
         double volume = paintCalcService.calcVolume(calcDto);
 
-        Assert.assertEquals(39, volume, 0.0);
+        Assert.assertEquals(36, volume, 0.0);
     }
 
 

@@ -49,6 +49,11 @@ public class PaintCalcService {
         } else if (calcDto.getShape() == cuboidWith1MC && calcDto.getLength() > 0 && calcDto.getWidth() > 0
                 && calcDto.getHeight() > 0 && calcDto.getCorner1Len() > 0 && calcDto.getCorner1Wid() > 0) {
             return (calcDto.getLength() * calcDto.getWidth() - calcDto.getCorner1Len() * calcDto.getCorner1Wid()) * calcDto.getHeight();
+        } else if (calcDto.getShape() == cuboidWith2MC && calcDto.getLength() > 0 && calcDto.getWidth() > 0
+                && calcDto.getHeight() > 0 && calcDto.getCorner1Len() > 0 && calcDto.getCorner1Wid() > 0
+                && calcDto.getCorner2Len() > 0 && calcDto.getCorner2Wid() > 0) {
+            return (calcDto.getLength() * calcDto.getWidth() - calcDto.getCorner1Len() * calcDto.getCorner1Wid()
+            - calcDto.getCorner2Len() * calcDto.getCorner2Wid()) * calcDto.getHeight();
         }
         return 0;
     }

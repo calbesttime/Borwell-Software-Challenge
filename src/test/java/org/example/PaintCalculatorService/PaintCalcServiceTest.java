@@ -135,6 +135,30 @@ public class PaintCalcServiceTest {
         Assert.assertEquals(188.4, amount, 0.0);
     }
 
+    @Test
+    public void amount_should_be_48L_if_the_room_is_a_3mx5mx3m_cuboid_with_a_1mx2m_missing_corner() {
+        final PaintCalcService paintCalcService = new PaintCalcService();
+        final String shape = "cuboid_with_1_missing_corner";
+        final double length = 5;
+        final double width = 3;
+        final double height = 3;
+        // The dimensions of the rectangular missing corner will not affect the amount of paint required.
+        // So we do not need to test the amount of the paint required to paint the walls of a cuboid room with 2 rectangular missing corners
+        final double corner1Len = 2;
+        final double corner1Wid = 1;
+        HashMap<String, Double> dimensions = new HashMap<>();
+        // "shape" == 1.0 while the room is a cuboid
+        dimensions.put("shape", 1.0);
+        dimensions.put("length", length);
+        dimensions.put("width", width);
+        dimensions.put("height", height);
+        final CalcDto calcDto = buildCalcDto(dimensions);
+
+        double amount = paintCalcService.calcAmount(calcDto);
+
+        Assert.assertEquals(48, amount, 0.0);
+    }
+
     private CalcDto buildCalcDto(HashMap dimensions) {
         CalcDto calcDto = new CalcDto();
         if (dimensions.get("shape").equals(1.0)) {

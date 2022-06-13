@@ -1,6 +1,6 @@
 package org.example.PaintCalculatorService;
 
-public class CalcAreaDto {
+public class CalcDto {
 
     private double shape;
     private double length;

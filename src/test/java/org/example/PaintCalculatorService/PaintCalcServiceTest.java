@@ -164,7 +164,7 @@ public class PaintCalcServiceTest {
     /* --- Tests for calculating the volume of the room --- */
 
     @Test
-    public void volume_should_be_45_if_the_room_is_a_3mx5mx3m_cuboid() {
+    public void volume_should_be_45m3_if_the_room_is_a_3mx5mx3m_cuboid() {
         final PaintCalcService paintCalcService = new PaintCalcService();
         final String shape = "cuboid";
         final double length = 5;
@@ -181,6 +181,24 @@ public class PaintCalcServiceTest {
         double volume = paintCalcService.calcVolume(calcDto);
 
         Assert.assertEquals(45, volume, 0.0);
+    }
+
+    @Test
+    public void volume_should_be_942m3_if_the_room_is_a_cylinder_with_a_radius_of_10m_and_a_height_of_3m() {
+        final PaintCalcService paintCalcService = new PaintCalcService();
+        final String shape = "cylinder";
+        final double radius = 10;
+        final double height = 3;
+        HashMap<String, Double> dimensions = new HashMap<>();
+        // "shape" == 2.0 while the room is a cylinder
+        dimensions.put("shape", 2.0);
+        dimensions.put("radius", radius);
+        dimensions.put("height", height);
+        final CalcDto calcDto = buildCalcDto(dimensions);
+
+        double volume = paintCalcService.calcVolume(calcDto);
+
+        Assert.assertEquals(188.4, volume, 0.0);
     }
 
     private CalcDto buildCalcDto(HashMap dimensions) {

@@ -95,7 +95,6 @@ public class PaintCalcServiceTest {
     /* --- Tests for calculating the area of the floor ends --- */
 
     /* --- Tests for calculating the amount of the paint required to paint the walls --- */
-
     /* Assume 1L paint is required to paint 1m^2 wall*/
     @Test
     public void amount_should_be_48L_if_the_room_is_a_3mx5mx3m_cuboid() {
@@ -157,6 +156,31 @@ public class PaintCalcServiceTest {
         double amount = paintCalcService.calcAmount(calcDto);
 
         Assert.assertEquals(48, amount, 0.0);
+    }
+
+    /* --- Tests for calculating the amount of the paint required to paint the walls ends --- */
+
+
+    /* --- Tests for calculating the volume of the room --- */
+
+    @Test
+    public void volume_should_be_45_if_the_room_is_a_3mx5mx3m_cuboid() {
+        final PaintCalcService paintCalcService = new PaintCalcService();
+        final String shape = "cuboid";
+        final double length = 5;
+        final double width = 3;
+        final double height = 3;
+        HashMap<String, Double> dimensions = new HashMap<>();
+        // "shape" == 1.0 while the room is a cuboid
+        dimensions.put("shape", 1.0);
+        dimensions.put("length", length);
+        dimensions.put("width", width);
+        dimensions.put("height", height);
+        final CalcDto calcDto = buildCalcDto(dimensions);
+
+        double volume = paintCalcService.calcVolume(calcDto);
+
+        Assert.assertEquals(45, volume, 0.0);
     }
 
     private CalcDto buildCalcDto(HashMap dimensions) {

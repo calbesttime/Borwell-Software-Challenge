@@ -6,6 +6,8 @@ public class CalcAreaDto {
     private double length;
     private double width;
 
+    private double radius;
+
     public void setShape(double shape) {
         this.shape = shape;
     }
@@ -15,6 +17,10 @@ public class CalcAreaDto {
 
     public void setWid(double width) {
         this.width = width;
+    }
+
+    public void setRadius(Double radius) {
+        this.radius = radius;
     }
 
     public double getShape() {
@@ -27,5 +33,9 @@ public class CalcAreaDto {
 
     public double getWidth() {
         return width;
+    }
+
+    public double getRadius() {
+        return radius;
     }
 }

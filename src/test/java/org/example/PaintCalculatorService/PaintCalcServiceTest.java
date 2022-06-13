@@ -147,6 +147,9 @@ public class PaintCalcServiceTest {
         } else if (dimensions.get("shape").equals(2.0)) {
             calcDto.setShape((Double) dimensions.get("shape"));
             calcDto.setRadius((Double) dimensions.get("radius"));
+            if (dimensions.containsKey("height")) {
+                calcDto.setHeight((Double) dimensions.get("height"));
+            }
         } else if (dimensions.get("shape").equals(3.0)) {
             calcDto.setShape((Double) dimensions.get("shape"));
             calcDto.setLen((Double) dimensions.get("length"));

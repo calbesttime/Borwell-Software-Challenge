@@ -30,6 +30,8 @@ public class PaintCalcService {
         if (calcDto.getShape() == cuboid && calcDto.getLength() > 0 && calcDto.getWidth() > 0
         && calcDto.getHeight() > 0) {
             return unitPaint * 2 * (calcDto.getLength() + calcDto.getWidth()) * calcDto.getHeight();
+        } else if (calcDto.getShape() == cylinder && calcDto.getRadius() > 0 && calcDto.getHeight() > 0) {
+            return 2 * pi * calcDto.getRadius() * calcDto.getHeight();
         }
         return 0;
     }

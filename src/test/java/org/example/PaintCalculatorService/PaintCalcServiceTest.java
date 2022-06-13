@@ -95,8 +95,9 @@ public class PaintCalcServiceTest {
 
     /* --- Tests for calculating the amount of the paint required to paint the walls --- */
 
+    /* Assume 1L paint is required to paint 1m^2 wall*/
     @Test
-    public void amount_should_be_48_if_the_room_is_a_3mx5mx3m_cuboid() {
+    public void amount_should_be_48L_if_the_room_is_a_3mx5mx3m_cuboid() {
         final PaintCalcService paintCalcService = new PaintCalcService();
         final String shape = "cuboid";
         final double length = 5;
@@ -113,6 +114,10 @@ public class PaintCalcServiceTest {
         double amount = paintCalcService.calcAmount(calcAreaDto);
 
         Assert.assertEquals(48, amount, 0);
+    }
+
+    @Test
+    public void amount_should_be_188_point_4_() {
     }
 
     private CalcAreaDto buildCalcAreaDto(HashMap dimensions) {

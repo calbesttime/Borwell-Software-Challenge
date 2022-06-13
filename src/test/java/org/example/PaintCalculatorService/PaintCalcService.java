@@ -6,6 +6,7 @@ public class PaintCalcService {
     final private double cylinder = 2.0;
     final private double cuboidWith1MC = 3.0;
     final private double cuboidWith2MC = 4.0;
+    final private double unitPaint = 1.0;
 
     public double calcArea(CalcAreaDto calcAreaDto) {
         if (calcAreaDto.getShape() == cuboid && calcAreaDto.getLength() > 0 && calcAreaDto.getWidth() > 0) {
@@ -28,7 +29,7 @@ public class PaintCalcService {
     public double calcAmount(CalcAreaDto calcAreaDto) {
         if (calcAreaDto.getShape() == cuboid && calcAreaDto.getLength() > 0 && calcAreaDto.getWidth() > 0
         && calcAreaDto.getHeight() > 0) {
-            return 2 * (calcAreaDto.getLength() + calcAreaDto.getWidth()) * calcAreaDto.getHeight();
+            return unitPaint * 2 * (calcAreaDto.getLength() + calcAreaDto.getWidth()) * calcAreaDto.getHeight();
         }
         return 0;
     }

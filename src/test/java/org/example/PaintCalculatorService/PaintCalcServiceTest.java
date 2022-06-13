@@ -253,6 +253,8 @@ public class PaintCalcServiceTest {
         Assert.assertEquals(36, volume, 0.0);
     }
 
+    /* --- Tests for calculating the volume of the room ends --- */
+
 
     private CalcDto buildCalcDto(HashMap dimensions) {
         CalcDto calcDto = new CalcDto();

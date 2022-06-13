@@ -7,6 +7,7 @@ import java.util.HashMap;
 
 public class PaintCalcServiceTest {
 
+    /* --- Tests for calculating the area of the floor --- */
     @Test
     public void area_should_be_15m2_if_the_room_floor_is_a_3m_by_5m_rectangular() {
         //Given
@@ -90,12 +91,37 @@ public class PaintCalcServiceTest {
         Assert.assertEquals(12, area, 0);
     }
 
+    /* --- Tests for calculating the area of the floor ends --- */
+
+    /* --- Tests for calculating the amount of the paint required to paint the walls --- */
+
+    @Test
+    public void amount_should_be_48_if_the_room_is_a_3mx5mx3m_cuboid() {
+        final PaintCalcService paintCalcService = new PaintCalcService();
+        final String shape = "cuboid";
+        final double length = 5;
+        final double width = 3;
+        final double height = 3;
+        HashMap<String, Double> dimensions = new HashMap<>();
+        // "shape" == 1.0 while the room is a cuboid
+        dimensions.put("shape", 1.0);
+        dimensions.put("length", 5.0);
+        dimensions.put("width", 3.0);
+        dimensions.put("height", 3.0);
+        final CalcAreaDto calcAreaDto = buildCalcAreaDto(dimensions);
+
+        double are = paintCalcService.calcArea(calcAreaDto);
+
+        Assert.assertEquals(48, are, 0);
+    }
+
     private CalcAreaDto buildCalcAreaDto(HashMap dimensions) {
         CalcAreaDto calcAreaDto = new CalcAreaDto();
         if (dimensions.get("shape").equals(1.0)) {
             calcAreaDto.setShape((Double) dimensions.get("shape"));
             calcAreaDto.setLen((Double) dimensions.get("length"));
             calcAreaDto.setWid((Double) dimensions.get("width"));
+            calcAreaDto.setHeight((Double) dimensions.get("height"));
         } else if (dimensions.get("shape").equals(2.0)) {
             calcAreaDto.setShape((Double) dimensions.get("shape"));
             calcAreaDto.setRadius((Double) dimensions.get("radius"));

@@ -26,12 +26,31 @@ public class PaintCalcServiceTest {
         Assert.assertEquals(15, area, 0);
     }
 
+    @Test
+    public void area_should_be_314m2_if_the_room_is_a_cylinder_with_a_radius_of_10m() {
+        final PaintCalcService paintCalcService = new PaintCalcService();
+        final String shape = "cylinder";
+        final double radius = 10;
+        HashMap<String, Double> dimensions = new HashMap<>();
+        // "shape" == 2.0 while the room is a cylinder
+        dimensions.put("shape", 2.0);
+        dimensions.put("radius", 10.0);
+        final CalcAreaDto calcAreaDto = buildCalcAreaDto(dimensions);
+
+        double area = paintCalcService.calcArea(calcAreaDto);
+
+        Assert.assertEquals(314, area, 0);
+    }
+
     private CalcAreaDto buildCalcAreaDto(HashMap dimensions) {
         CalcAreaDto calcAreaDto = new CalcAreaDto();
         if (dimensions.get("shape").equals(1.0)) {
             calcAreaDto.setShape((Double) dimensions.get("shape"));
             calcAreaDto.setLen((Double) dimensions.get("length"));
             calcAreaDto.setWid((Double) dimensions.get("width"));
+        } else if (dimensions.get("shape").equals(2.0)) {
+            calcAreaDto.setShape((Double) dimensions.get("shape"));
+            calcAreaDto.setRadius((Double) dimensions.get("radius"));
         }
         return calcAreaDto;
     }

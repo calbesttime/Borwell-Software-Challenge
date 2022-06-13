@@ -24,7 +24,7 @@ public class PaintCalcServiceTest {
         //When
         double area = paintCalcService.calcArea(calcDto);
         //Then
-        Assert.assertEquals(15, area, 0);
+        Assert.assertEquals(15, area, 0.0);
     }
 
     @Test
@@ -40,7 +40,7 @@ public class PaintCalcServiceTest {
 
         double area = paintCalcService.calcArea(calcDto);
 
-        Assert.assertEquals(314, area, 0);
+        Assert.assertEquals(314, area, 0.0);
     }
 
     @Test
@@ -62,7 +62,7 @@ public class PaintCalcServiceTest {
 
         double area = paintCalcService.calcArea(calcDto);
 
-        Assert.assertEquals(13, area, 0);
+        Assert.assertEquals(13, area, 0.0);
     }
 
     @Test
@@ -89,7 +89,7 @@ public class PaintCalcServiceTest {
         double area = paintCalcService.calcArea(calcDto);
 
 
-        Assert.assertEquals(12, area, 0);
+        Assert.assertEquals(12, area, 0.0);
     }
 
     /* --- Tests for calculating the area of the floor ends --- */
@@ -114,7 +114,7 @@ public class PaintCalcServiceTest {
 
         double amount = paintCalcService.calcAmount(calcDto);
 
-        Assert.assertEquals(48, amount, 0);
+        Assert.assertEquals(48, amount, 0.0);
     }
 
     @Test
@@ -132,7 +132,7 @@ public class PaintCalcServiceTest {
 
         double amount = paintCalcService.calcAmount(calcDto);
 
-        Assert.assertEquals(188.4, amount, 0);
+        Assert.assertEquals(188.4, amount, 0.0);
     }
 
     private CalcDto buildCalcDto(HashMap dimensions) {

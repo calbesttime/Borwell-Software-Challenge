@@ -18,8 +18,8 @@ public class PaintCalcServiceTest {
         HashMap<String, Double> dimensions = new HashMap<>();
         // "shape" == 1.0 while the room is a cuboid
         dimensions.put("shape", 1.0);
-        dimensions.put("length", 5.0);
-        dimensions.put("width", 3.0);
+        dimensions.put("length", length);
+        dimensions.put("width", width);
         final CalcAreaDto calcAreaDto = buildCalcAreaDto(dimensions);
         //When
         double area = paintCalcService.calcArea(calcAreaDto);
@@ -35,7 +35,7 @@ public class PaintCalcServiceTest {
         HashMap<String, Double> dimensions = new HashMap<>();
         // "shape" == 2.0 while the room is a cylinder
         dimensions.put("shape", 2.0);
-        dimensions.put("radius", 10.0);
+        dimensions.put("radius", radius);
         final CalcAreaDto calcAreaDto = buildCalcAreaDto(dimensions);
 
         double area = paintCalcService.calcArea(calcAreaDto);
@@ -54,10 +54,10 @@ public class PaintCalcServiceTest {
         HashMap<String, Double> dimensions = new HashMap<>();
         // "shape" == 3.0 while the room is a cuboid with 1 missing corner
         dimensions.put("shape", 3.0);
-        dimensions.put("length", 5.0);
-        dimensions.put("width", 3.0);
-        dimensions.put("corner1Len", 2.0);
-        dimensions.put("corner1Wid", 1.0);
+        dimensions.put("length", length);
+        dimensions.put("width", width);
+        dimensions.put("corner1Len", corner1Len);
+        dimensions.put("corner1Wid", corner1Wid);
         final CalcAreaDto calcAreaDto = buildCalcAreaDto(dimensions);
 
         double area = paintCalcService.calcArea(calcAreaDto);
@@ -78,12 +78,12 @@ public class PaintCalcServiceTest {
         HashMap<String, Double> dimensions = new HashMap<>();
         // "shape" == 4.0 while the room is a cuboid with 2 missing corner
         dimensions.put("shape", 4.0);
-        dimensions.put("length", 5.0);
-        dimensions.put("width", 3.0);
-        dimensions.put("corner1Len", 2.0);
-        dimensions.put("corner1Wid", 1.0);
-        dimensions.put("corner2Len", 1.0);
-        dimensions.put("corner2Wid", 1.0);
+        dimensions.put("length", length);
+        dimensions.put("width", width);
+        dimensions.put("corner1Len", corner1Len);
+        dimensions.put("corner1Wid", corner1Wid);
+        dimensions.put("corner2Len", corner2Len);
+        dimensions.put("corner2Wid", corner2Wid);
         final CalcAreaDto calcAreaDto = buildCalcAreaDto(dimensions);
 
         double area = paintCalcService.calcArea(calcAreaDto);
@@ -105,9 +105,9 @@ public class PaintCalcServiceTest {
         HashMap<String, Double> dimensions = new HashMap<>();
         // "shape" == 1.0 while the room is a cuboid
         dimensions.put("shape", 1.0);
-        dimensions.put("length", 5.0);
-        dimensions.put("width", 3.0);
-        dimensions.put("height", 3.0);
+        dimensions.put("length", length);
+        dimensions.put("width", width);
+        dimensions.put("height", height);
         final CalcAreaDto calcAreaDto = buildCalcAreaDto(dimensions);
 
         double amount = paintCalcService.calcAmount(calcAreaDto);
@@ -121,7 +121,9 @@ public class PaintCalcServiceTest {
             calcAreaDto.setShape((Double) dimensions.get("shape"));
             calcAreaDto.setLen((Double) dimensions.get("length"));
             calcAreaDto.setWid((Double) dimensions.get("width"));
-            calcAreaDto.setHeight((Double) dimensions.get("height"));
+            if (dimensions.containsKey("height")) {
+                calcAreaDto.setHeight((Double) dimensions.get("height"));
+            }
         } else if (dimensions.get("shape").equals(2.0)) {
             calcAreaDto.setShape((Double) dimensions.get("shape"));
             calcAreaDto.setRadius((Double) dimensions.get("radius"));

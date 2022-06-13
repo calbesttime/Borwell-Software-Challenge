@@ -24,4 +24,12 @@ public class PaintCalcService {
         }
         return 0;
     }
+
+    public double calcAmount(CalcAreaDto calcAreaDto) {
+        if (calcAreaDto.getShape() == cuboid && calcAreaDto.getLength() > 0 && calcAreaDto.getWidth() > 0
+        && calcAreaDto.getHeight() > 0) {
+            return 2 * (calcAreaDto.getLength() + calcAreaDto.getWidth()) * calcAreaDto.getHeight();
+        }
+        return 0;
+    }
 }

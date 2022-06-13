@@ -198,7 +198,7 @@ public class PaintCalcServiceTest {
 
         double volume = paintCalcService.calcVolume(calcDto);
 
-        Assert.assertEquals(188.4, volume, 0.0);
+        Assert.assertEquals(942, volume, 0.0);
     }
 
     private CalcDto buildCalcDto(HashMap dimensions) {

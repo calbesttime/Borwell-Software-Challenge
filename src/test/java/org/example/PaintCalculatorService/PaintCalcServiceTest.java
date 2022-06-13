@@ -130,9 +130,9 @@ public class PaintCalcServiceTest {
         dimensions.put("height", height);
         final CalcDto calcDto = buildCalcDto(dimensions);
 
-        double area = paintCalcService.calcArea(calcDto);
+        double amount = paintCalcService.calcAmount(calcDto);
 
-        Assert.assertEquals(314, area, 0);
+        Assert.assertEquals(188.4, amount, 0);
     }
 
     private CalcDto buildCalcDto(HashMap dimensions) {

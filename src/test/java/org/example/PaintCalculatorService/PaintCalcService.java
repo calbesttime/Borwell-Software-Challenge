@@ -14,6 +14,12 @@ public class PaintCalcService {
         } else if (calcAreaDto.getShape() == cuboidWith1MC && calcAreaDto.getLength() > 0 && calcAreaDto.getWidth() > 0
                 && calcAreaDto.getCorner1Len() > 0 && calcAreaDto.getCorner1Len() > 0) {
             return calcAreaDto.getLength() * calcAreaDto.getWidth() - calcAreaDto.getCorner1Len() * calcAreaDto.getCorner1Wid();
+        } else if (calcAreaDto.getShape() == 4.0 && calcAreaDto.getLength() > 0 && calcAreaDto.getWidth() > 0
+                && calcAreaDto.getCorner1Len() > 0 && calcAreaDto.getCorner1Len() > 0
+                && calcAreaDto.getCorner2Len() > 0 && calcAreaDto.getCorner2Wid() > 0) {
+            return calcAreaDto.getLength() * calcAreaDto.getWidth() -
+                    calcAreaDto.getCorner1Len() * calcAreaDto.getCorner1Wid() -
+                    calcAreaDto.getCorner2Len()* calcAreaDto.getCorner2Wid();
         }
         return 0;
     }
